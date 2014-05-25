@@ -1,0 +1,54 @@
+
+@mixin sassy-colour1($r, $g, $b){
+    background-color : rgba($r, $g, $b, 1);
+}
+
+@mixin sassy-colour2($r, $g, $b){
+  $r: $r - 10;
+  $g: $r - 10;
+  $b: $r - 10;
+  $r: within255($r);
+  $g: within255($g);
+  $b: within255($b);
+  background-color : rgba($r, $g, $b, 1);
+}
+@mixin sassy-colour3($r, $g, $b){
+  $r: $r - 90;
+  $g: $r - 60;
+  $b: $r - 30;
+  $r: within255($r);
+  $g: within255($g);
+  $b: within255($b);
+  background-color : rgba($r, $g, $b, 1);
+}
+@mixin sassy-colour4($r, $g, $b){
+  $r: $r - 20;
+  $g: $r - 20;
+  $b: $r - 30;
+  $r: within255($r);
+  $g: within255($g);
+  $b: within255($b);
+  background-color : rgba($r, $g, $b, 1);
+}
+@mixin sassy-colour5($r, $g, $b){
+  $r: $r - 30;
+  $g: $r - 50;
+  $b: $r - 90;
+  $r: within255($r);
+  $g: within255($g);
+  $b: within255($b);
+  background-color : rgba($r, $g, $b, 1);
+}
+
+@function within255($n){
+  @if($n > 255){
+    $n: $n - 255;
+  }
+  @elseif($n < 0){
+    $n: $n + 255;
+  }
+  @else{
+    $n: $n;
+  }
+  @return $n;
+}

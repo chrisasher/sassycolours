@@ -1,0 +1,36 @@
+body, html{
+  margin: 0px;
+  padding: 0px;
+  font-size: 16px;
+  background-color: #f3f3f3;
+  font-family: sans-serif;
+}
+
+div{
+  float: left;
+  height: 100px;
+  width: 150px;
+  border: 5px solid #FFF;
+  margin: 20px;
+  padding: 50px 10px 10px 10px;
+  text-align: center;
+}
+
+// use sassy colours
+
+
+.colour-1{
+  @include sassy-colour1($r,$g,$b);
+}
+.colour-2{
+  @include sassy-colour2($r,$g,$b);
+}
+.colour-3{
+  @include sassy-colour3($r,$g,$b);
+}
+.colour-4{
+  @include sassy-colour4($r,$g,$b);
+}
+.colour-5{
+  @include sassy-colour5($r,$g,$b);
+}
