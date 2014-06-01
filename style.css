@@ -1,30 +1,75 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; }
+.colour-1 { background-color: #e86ea4; }
 
-html { line-height: 1; }
+.colour-2 { background-color: #e8776e; }
 
-ol, ul { list-style: none; }
+.colour-3 { background-color: #e8b46e; }
 
-table { border-collapse: collapse; border-spacing: 0; }
+.colour-4 { background-color: #dfe86e; }
 
-caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+.colour-5 { background-color: #a2e86e; }
 
-q, blockquote { quotes: none; }
-q:before, q:after, blockquote:before, blockquote:after { content: ""; content: none; }
+.mono-colour-1 { background-color: #5c939a; }
 
-a img { border: none; }
+.mono-colour-2 { background-color: #86a9ad; }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary { display: block; }
+.mono-colour-3 { background-color: #9bb4b7; }
 
-body, html { margin: 0px; padding: 0px; font-size: 16px; background-color: #f3f3f3; font-family: sans-serif; }
+.mono-colour-4 { background-color: #afbfc2; }
 
-div { float: left; height: 100px; width: 150px; border: 5px solid #FFF; margin: 20px; padding: 50px 10px 10px 10px; text-align: center; }
+.mono-colour-5 { background-color: #c2cccd; }
 
-.colour-1 { background-color: #69ff7b; }
+.compound-colour-1 { background-color: #5c939a; }
 
-.colour-2 { background-color: #5f5555; }
+.compound-colour-2 { background-color: #9a635c; }
 
-.colour-3 { background-color: #0fd2f0; }
+.compound-colour-3 { background-color: #5c9a82; }
 
-.colour-4 { background-color: #554137; }
+.compound-colour-4 { background-color: #9a5c74; }
 
-.colour-5 { background-color: #4b19f0; }
+.compound-colour-5 { background-color: #98d5dd; }
+
+.split-colour-1 { background-color: #5c939a; }
+
+.split-colour-2 { background-color: #9a825c; }
+
+.split-colour-3 { background-color: #ddc298; }
+
+.split-colour-4 { background-color: #9a5c74; }
+
+.split-colour-5 { background-color: #dd98b3; }
+
+.triad-colour-1 { background-color: #5c939a; }
+
+.triad-colour-2 { background-color: #98d5dd; }
+
+.triad-colour-3 { background-color: #939a5c; }
+
+.triad-colour-4 { background-color: #d5dd98; }
+
+.triad-colour-5 { background-color: #9a5c92; }
+
+.analog-colour-1 { background-color: #5c939a; }
+
+.analog-colour-2 { background-color: #5c749a; }
+
+.analog-colour-3 { background-color: #635c9a; }
+
+.analog-colour-4 { background-color: #825c9a; }
+
+.analog-colour-5 { background-color: #9a5c93; }
+
+.mono-gray-colour-1 { background-color: #7b7b7b; }
+
+.mono-gray-colour-2 { background-color: #9a9a9a; }
+
+.mono-gray-colour-3 { background-color: darkgrey; }
+
+.mono-gray-colour-4 { background-color: #b8b8b8; }
+
+.mono-gray-colour-5 { background-color: #c7c7c7; }
+
+.base-colour { background-color: #5c939a; }
+
+section { float: left; width: 100%; }
+
+div { float: left; height: 150px; width: 150px; margin: 20px; }

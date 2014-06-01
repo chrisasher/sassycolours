@@ -1,0 +1,225 @@
+// -------------------------------------------------//
+// Sassycolours created by: Chris Asher
+// -------------------------------------------------//
+//
+//
+// -------------------- USAGE ----------------------//
+//
+// The followinng would go into your styles.scss or variables.scss or whatever. just make sure the path is correct if it is moved out of the partials folder in this example
+//
+// -- step 1 include _sassycolours scss
+// @import 'partials/sassycolours';
+
+// -- colour rule options are:
+// 'mono' (default - monochromatic)
+// 'compound'
+// 'complimentary' (TO DO)
+// 'split' (split complimentary)
+// 'triad'
+// 'analog' (analogous)
+
+// -- there is a third boolean (true/false) option for grayscale, by default it is false.
+
+// -- Just Call the sassycolours function and set: sassycolours([hexidecimal colour value: hex], [colour-rule: string], [grayscale: boolean - optional])
+
+// -- example usage -- //
+// $colour: sassycolours(#e86ea4, 'split');
+// -- this will return a list of 5 values and assign it to the variable '$colour'
+
+// -- then set each the list items to a colour variable you will remember
+//$colour-1: nth($colour, 1);
+//$colour-2: nth($colour, 2);
+//$colour-3: nth($colour, 3);
+//$colour-4: nth($colour, 4);
+//$colour-5: nth($colour, 5);
+
+// then you are able to use the colour variables within your css
+
+
+
+
+
+
+// START FUNCTIONS
+@function change-direction($input){
+  @if($input < 50){
+    @return $input + 25;
+  }
+  @else{
+    @return $input - 25;
+  }
+}
+
+@function correct-hue($h){
+  @if($h > 359){
+    $h: $h - 359;
+  }
+  @return $h;
+}
+
+//triad
+@function change-triad($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for triad
+  @if($count == 1){
+  }
+  @if($count == 2){
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  @if($count == 3){
+    $h: $h - 120;
+  }
+  @if($count == 4){
+    $h: $h - 120;
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  @if($count == 5){
+    $h: $h - (359- 120);
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end triad
+
+
+//compound
+@function change-compound($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for compound
+  @if($count == 1){
+  }
+  @if($count == 2){
+    $h: hue(complement($hex));
+  }
+  @if($count == 3){
+    $h: $h - 30;
+  }
+  @if($count == 4){
+    $h: ($h - 30) - 180;
+  }
+  @if($count == 5){
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end compound
+
+
+//analogous
+@function change-analog($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for analogous
+  @if($count != 1){
+    $h: $h + (30 * ($count - 1));
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end analogous
+
+
+//split complimentary
+@function change-split($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for split complimentary
+  @if($count == 1){
+  }
+  @if($count == 2){
+    $h: hue(complement($hex)) + 30;
+  }
+  @if($count == 3){
+    $h: hue(complement($hex)) + 30;
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  @if($count == 4){
+    $h: hue(complement($hex)) - 30;
+  }
+  @if($count == 5){
+    $h: hue(complement($hex)) - 30;
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end split complimentary
+
+
+//monochromatic
+@function change-mono($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for monochromatic
+  @if($count != 1){
+    $s: fixhundreds($s - $count * 3);
+    $l: fixhundreds($l + $count * 6);
+  }
+
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end monochromatic
+
+// for values that cant be more or less than 100
+@function fixhundreds($n){
+  @if($n > 100){
+    $n: $n - 100;
+  }
+  @if($n < 0){
+    $n: $n + 100;
+  }
+  @return $n
+}
+
+// get the colours
+@function sassycolours($hex: #e86ea4, $rule: 'mono', $grayscale: false){
+  $colours: ();
+  @for $i from 1 through 5{
+    $hsl: null;
+    $hsl: if(($rule == 'triad'), change-triad($hex, $i), $hsl);
+    $hsl: if(($rule == 'compound'), change-compound($hex, $i), $hsl);
+    $hsl: if(($rule == 'analog'), change-analog($hex, $i), $hsl);
+    $hsl: if(($rule == 'split'), change-split($hex, $i), $hsl);
+    $hsl: if(($rule == 'mono'), change-mono($hex, $i), $hsl);
+    $h:nth($hsl,1);
+    $s:nth($hsl,2);
+    $l:nth($hsl,3);
+    $newcolour: hsl($h,$s,$l);
+    @if($grayscale){
+      $newcolour: grayscale($newcolour);
+    }
+    $colours: append($colours, $newcolour);
+  }
+  @return $colours;
+}
+// end of functions
+

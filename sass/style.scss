@@ -1,6 +1,114 @@
-@import "compass/reset";
+// step 1 include _sassycolours scss
+@import 'partials/sassycolours';
 
-@import 'partials/variables';
-@import 'partials/layout';
+// rule options are:
+// 'mono' (default - monochromatic)
+// 'compound'
+// 'complimentary' (TO DO)
+// 'split' (split complimentary)
+// 'triad'
+// 'analog' (analogous)
+
+// there is a third boolean (true/false) option for grayscale, by default it is false.
+
+// Just Call
+$colour: sassycolours(#e86ea4, 'analog');
+
+// then set the list items to a colour variable you will remember
+$colour-1: nth($colour, 1);
+$colour-2: nth($colour, 2);
+$colour-3: nth($colour, 3);
+$colour-4: nth($colour, 4);
+$colour-5: nth($colour, 5);
 
 
+// example usage - do your own css here
+.colour-1{
+  background-color: $colour-1;
+}
+.colour-2{
+  background-color: $colour-2;
+}
+.colour-3{
+  background-color: $colour-3;
+}
+.colour-4{
+  background-color: $colour-4;
+}
+.colour-5{
+  background-color: $colour-5;
+}
+
+// The examples shown on the page use a loop to set the background colour for each
+
+// set the base colour once
+$base-colour: #5c939a;
+
+// monochromatic colour scheme uses default values
+$colour: sassycolours($base-colour);
+@for $i from 1 through 5{
+  .mono-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+// compound
+$scheme: 'compound';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+// split
+$scheme: 'split';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+// triad
+$scheme: 'triad';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+// analog
+$scheme: 'analog';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+// analog - grayscale
+$scheme: 'mono';
+$colour: sassycolours($base-colour, $scheme, true);
+@for $i from 1 through 5{
+  .#{$scheme}-gray-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+.base-colour{
+  background-color: $base-colour;
+}
+
+section{
+  float:left;
+  width: 100%;
+}
+
+div{
+  float:left;
+  height:150px;
+  width: 150px;
+  margin: 20px;
+}
