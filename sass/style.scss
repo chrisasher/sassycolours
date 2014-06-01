@@ -4,10 +4,12 @@
 // rule options are:
 // 'mono' (default - monochromatic)
 // 'compound'
-// 'complimentary' (TO DO)
-// 'split' (split complimentary)
+// 'complement' (complementary)
+// 'split' (split complementary)
 // 'triad'
+// 'triad2'
 // 'analog' (analogous)
+// 'analog2' (analogous)
 
 // there is a third boolean (true/false) option for grayscale, by default it is false.
 
@@ -42,7 +44,7 @@ $colour-5: nth($colour, 5);
 // The examples shown on the page use a loop to set the background colour for each
 
 // set the base colour once
-$base-colour: #5c939a;
+$base-colour: #7EA7D8;
 
 // monochromatic colour scheme uses default values
 $colour: sassycolours($base-colour);
@@ -70,6 +72,15 @@ $colour: sassycolours($base-colour, $scheme);
   }
 }
 
+// complement
+$scheme: 'complement';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
 // triad
 $scheme: 'triad';
 $colour: sassycolours($base-colour, $scheme);
@@ -79,8 +90,26 @@ $colour: sassycolours($base-colour, $scheme);
   }
 }
 
+// triad2
+$scheme: 'triad2';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
 // analog
 $scheme: 'analog';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  .#{$scheme}-colour-#{$i}{
+    background-color: nth($colour, $i);
+  }
+}
+
+// analog
+$scheme: 'analog2';
 $colour: sassycolours($base-colour, $scheme);
 @for $i from 1 through 5{
   .#{$scheme}-colour-#{$i}{
@@ -111,4 +140,22 @@ div{
   height:150px;
   width: 150px;
   margin: 20px;
+}
+
+*{
+  font-family: sans-serif;
+}
+
+
+//////// colour palette mix example - Monochromatic within Triad
+
+$scheme: 'triad';
+$colour: sassycolours($base-colour, $scheme);
+@for $i from 1 through 5{
+  $palette: sassycolours(nth($colour, $i), 'mono');
+  @for $c from 1 through 5{
+    .set-#{$i}-#{$c}{
+      background-color: nth($palette, $c);
+    }
+  }
 }

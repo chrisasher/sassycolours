@@ -7,9 +7,24 @@
 <body>
 <section>
     <h1>SassyColours!</h1>
+    <h2>Basic colour palettes</h2>
+    <p>Below are the basic uses of SassyColours. Yes, i spell color as 'colour' because I am Australian... Sorry about that, but now you know how I feel whenever I am writing CSS :P</p>
+    <p>Colour palette options are:
+        <ul>
+    <li>Monochromatic: sassycolours($basecolour, 'mono')</li>
+    <li>Complementory: sassycolours($basecolour, 'complement')</li>
+    <li>Split complementory: sassycolours($basecolour, 'split')</li>
+    <li>Compound: sassycolours($basecolour, 'compound')</li>
+    <li>Triad: sassycolours($basecolour, 'triad')</li>
+    <li>Triad2 (the other direction): sassycolours($basecolour, 'triad2')</li>
+    <li>Analogous: sassycolours($basecolour, 'analog')</li>
+    <li>Analogous2 (the other direction): sassycolours($basecolour, 'analog2')</li>
+        </ul>
+    </p>
 </section>
 <section>
-    <h3>Base Colour</h3>
+    <h3>Base Colour: #7EA7D8</h3>
+    <p>This is the base colour we are using throughout the example</p>
     <div class="base-colour"></div>
     <div class="base-colour"></div>
     <div class="base-colour"></div>
@@ -18,16 +33,25 @@
 </section>
 
 <section>
-    <h3>Monochromatic</h3>
-    <div class="mono-colour-1"></div>
-    <div class="mono-colour-2"></div>
-    <div class="mono-colour-3"></div>
-    <div class="mono-colour-4"></div>
-    <div class="mono-colour-5"></div>
+    <h3>Monochromatic: sassycolours(#7EA7D8, 'mono')</h3>
+    <div class="set-1-1"></div>
+    <div class="set-1-2"></div>
+    <div class="set-1-3"></div>
+    <div class="set-1-4"></div>
+    <div class="set-1-5"></div>
 </section>
 
 <section>
-    <h3>Split Complimentary</h3>
+    <h3>Complementary: sassycolours(#7EA7D8, 'complement')</h3>
+    <div class="complement-colour-1"></div>
+    <div class="complement-colour-2"></div>
+    <div class="complement-colour-3"></div>
+    <div class="complement-colour-4"></div>
+    <div class="complement-colour-5"></div>
+</section>
+
+<section>
+    <h3>Split Complementary: sassycolours(#7EA7D8, 'split')</h3>
     <div class="split-colour-1"></div>
     <div class="split-colour-2"></div>
     <div class="split-colour-3"></div>
@@ -36,7 +60,7 @@
 </section>
 
 <section>
-    <h3>Compound</h3>
+    <h3>Compound: sassycolours(#7EA7D8, 'compound')</h3>
     <div class="compound-colour-1"></div>
     <div class="compound-colour-2"></div>
     <div class="compound-colour-3"></div>
@@ -45,7 +69,7 @@
 </section>
 
 <section>
-    <h3>Triad</h3>
+    <h3>Triad: sassycolours(#7EA7D8, 'triad')</h3>
     <div class="triad-colour-1"></div>
     <div class="triad-colour-2"></div>
     <div class="triad-colour-3"></div>
@@ -54,7 +78,16 @@
 </section>
 
 <section>
-    <h3>Analogous</h3>
+    <h3>Triad2 (the other direction): sassycolours(#7EA7D8, 'triad2')</h3>
+    <div class="triad2-colour-1"></div>
+    <div class="triad2-colour-2"></div>
+    <div class="triad2-colour-3"></div>
+    <div class="triad2-colour-4"></div>
+    <div class="triad2-colour-5"></div>
+</section>
+
+<section>
+    <h3>Analogous: sassycolours(#7EA7D8, 'analog')</h3>
     <div class="analog-colour-1"></div>
     <div class="analog-colour-2"></div>
     <div class="analog-colour-3"></div>
@@ -63,12 +96,68 @@
 </section>
 
 <section>
-    <h3>Mono in grayscale</h3>
+    <h3>Analogous2 (the other direction): sassycolours(#7EA7D8, 'analog2')</h3>
+    <div class="analog2-colour-1"></div>
+    <div class="analog2-colour-2"></div>
+    <div class="analog2-colour-3"></div>
+    <div class="analog2-colour-4"></div>
+    <div class="analog2-colour-5"></div>
+</section>
+
+<section>
+    <h3>Mono in grayscale: sassycolours(#7EA7D8, 'mono', true)</h3>
     <div class="mono-gray-colour-1"></div>
     <div class="mono-gray-colour-2"></div>
     <div class="mono-gray-colour-3"></div>
     <div class="mono-gray-colour-4"></div>
     <div class="mono-gray-colour-5"></div>
 </section>
+
+<section>
+    <h2>Combining colour palettes</h2>
+    <p>To get more out of SassyColours and maintain consistancy throught your design, try combining one colour palette with the monochromatic one. see the loop in the style.scss file for the execution of this one.</p>
+</section>
+
+<section>
+    <h3>Monochromatic within triad colour set 1</h3>
+    <div class="set-1-1"></div>
+    <div class="set-1-2"></div>
+    <div class="set-1-3"></div>
+    <div class="set-1-4"></div>
+    <div class="set-1-5"></div>
+</section>
+<section>
+    <h3>Monochromatic within triad colour set 2</h3>
+    <div class="set-2-1"></div>
+    <div class="set-2-2"></div>
+    <div class="set-2-3"></div>
+    <div class="set-2-4"></div>
+    <div class="set-2-5"></div>
+</section>
+<section>
+    <h3>Monochromatic within triad colour set 3</h3>
+    <div class="set-3-1"></div>
+    <div class="set-3-2"></div>
+    <div class="set-3-3"></div>
+    <div class="set-3-4"></div>
+    <div class="set-3-5"></div>
+</section>
+<section>
+    <h3>Monochromatic within triad colour set 4</h3>
+    <div class="set-4-1"></div>
+    <div class="set-4-2"></div>
+    <div class="set-4-3"></div>
+    <div class="set-4-4"></div>
+    <div class="set-4-5"></div>
+</section>
+<section>
+    <h3>Monochromatic within triad colour set 5</h3>
+    <div class="set-5-1"></div>
+    <div class="set-5-2"></div>
+    <div class="set-5-3"></div>
+    <div class="set-5-4"></div>
+    <div class="set-5-5"></div>
+</section>
+
 </body>
 </html>

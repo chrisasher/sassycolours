@@ -13,8 +13,8 @@
 // -- colour rule options are:
 // 'mono' (default - monochromatic)
 // 'compound'
-// 'complimentary' (TO DO)
-// 'split' (split complimentary)
+// 'complement' (complementary)
+// 'split' (split complementary)
 // 'triad'
 // 'analog' (analogous)
 
@@ -64,8 +64,6 @@
   $l: lightness($hex);
 
   //conditions for triad
-  @if($count == 1){
-  }
   @if($count == 2){
     $s: change-direction($s);
     $l: change-direction($l);
@@ -89,6 +87,36 @@
 // end triad
 
 
+//triad2
+@function change-triad2($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for triad
+  @if($count == 2){
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  @if($count == 3){
+    $h: $h + 120;
+  }
+  @if($count == 4){
+    $h: $h + 120;
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  @if($count == 5){
+    $h: $h + (359- 120);
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end triad2
+
+
 //compound
 @function change-compound($hex, $count){
   $h: hue($hex);
@@ -96,8 +124,6 @@
   $l: lightness($hex);
 
   //conditions for compound
-  @if($count == 1){
-  }
   @if($count == 2){
     $h: hue(complement($hex));
   }
@@ -137,15 +163,62 @@
 // end analogous
 
 
-//split complimentary
+//analogous2
+@function change-analog2($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for analogous
+  @if($count != 1){
+    $h: $h - (30 * ($count - 1));
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end analogous2
+
+
+//complementary
+@function change-complement($hex, $count){
+  $h: hue($hex);
+  $s: saturation($hex);
+  $l: lightness($hex);
+
+  //conditions for complementary
+  @if($count == 2){
+    $s: change-direction($s / 2);
+    $l: change-direction($l / 2 - 5);
+  }
+  @if($count == 3){
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  @if($count == 4){
+    $h: hue(complement($hex));
+  }
+  @if($count == 5){
+    $h: hue(complement($hex));
+    $s: change-direction($s);
+    $l: change-direction($l);
+  }
+  // correct hue
+  $h: correct-hue($h);
+  $output: ($h, $s, $l);
+  @return $output;
+}
+// end complementary
+
+
+//split complementary
 @function change-split($hex, $count){
   $h: hue($hex);
   $s: saturation($hex);
   $l: lightness($hex);
 
-  //conditions for split complimentary
-  @if($count == 1){
-  }
+  //conditions for split complementary
   @if($count == 2){
     $h: hue(complement($hex)) + 30;
   }
@@ -167,7 +240,7 @@
   $output: ($h, $s, $l);
   @return $output;
 }
-// end split complimentary
+// end split complementary
 
 
 //monochromatic
@@ -206,8 +279,11 @@
   @for $i from 1 through 5{
     $hsl: null;
     $hsl: if(($rule == 'triad'), change-triad($hex, $i), $hsl);
+    $hsl: if(($rule == 'triad2'), change-triad2($hex, $i), $hsl);
     $hsl: if(($rule == 'compound'), change-compound($hex, $i), $hsl);
     $hsl: if(($rule == 'analog'), change-analog($hex, $i), $hsl);
+    $hsl: if(($rule == 'analog2'), change-analog2($hex, $i), $hsl);
+    $hsl: if(($rule == 'complement'), change-complement($hex, $i), $hsl);
     $hsl: if(($rule == 'split'), change-split($hex, $i), $hsl);
     $hsl: if(($rule == 'mono'), change-mono($hex, $i), $hsl);
     $h:nth($hsl,1);
